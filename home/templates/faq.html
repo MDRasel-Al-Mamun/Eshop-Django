@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} FAQ {% endblock %}
+
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block stylesheet %} {% endblock %}
+
+{% block message %} {% include 'message.html' %} {% endblock %}
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Frequently Asked Questions</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="section-title">
+                    <h3 class="title">FAQ</h3>
+                </div>
+                <div id="accordion">
+                    {% for ask in faq %}
+                        <h3>{{ ask.question }}</h3>
+                        <div>
+                            <p>
+                                {{ ask.answer | safe }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}
+
+
+{% block scripts %} 
+
+<script>
+    $(function () {
+        $("#accordion").accordion();
+    });
+</script>
+
+{% endblock %}

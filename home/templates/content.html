@@ -1,0 +1,111 @@
+{% load static %}
+
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Latest Products</h2>
+                </div>
+            </div>
+            <!-- section title -->
+
+            <!-- Product Single -->
+            {% for latest in product_latest %}
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="product product-single">
+                    <div class="product-thumb">
+                        <a href="/product/{{ latest.id }}/{{ latest.slug }}" class="main-btn quick-view">
+                            <i class="fa fa-search-plus"></i> Quick view
+                        </a>
+                        <img src="{{ latest.image.url }}" height="360px" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-price">${{ latest.price }}</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star{% if latest.avaregereview < 1%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if latest.avaregereview < 2%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if latest.avaregereview < 3%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if latest.avaregereview < 4%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if latest.avaregereview < 5%}-o empty{% endif%}"></i>
+                            {{ latest.avaregereview }} / {{ latest.countreview }}
+                        </div>
+                        <h2 class="product-name">
+                            <a href="/product/{{ latest.id }}/{{ latest.slug }}">
+                                {{ latest.title|truncatewords:"5" }}
+                            </a>
+                        </h2>
+                        <div class="product-btns">
+                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                            <a href="/order/addtoshopcart/{{ latest.id }}" class="primary-btn add-to-cart">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /Product Single -->
+
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Picked For You</h2>
+                </div>
+            </div>
+            <!-- section title -->
+
+            <!-- Product Single -->
+            {% for pick in product_pick %}
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="product product-single">
+                    <div class="product-thumb">
+                        <a href="/product/{{ pick.id }}/{{ pick.slug }}" class="main-btn quick-view">
+                            <i class="fa fa-search-plus"></i> Quick view
+                        </a>
+                        <img src="{{ pick.image.url }}" height="360px" alt="">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-price">${{ pick.price }}</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star{% if pick.avaregereview < 1%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if pick.avaregereview < 2%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if pick.avaregereview < 3%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if pick.avaregereview < 4%}-o empty{% endif%}"></i>
+                            <i class="fa fa-star{% if pick.avaregereview < 5%}-o empty{% endif%}"></i>
+                            {{ pick.avaregereview }} / {{ pick.countreview }}
+                        </div>
+                        <h2 class="product-name">
+                            <a href="/product/{{ pick.id }}/{{ pick.slug }}">
+                                {{ pick.title|truncatewords:"5" }}
+                            </a>
+                        </h2>
+                        <div class="product-btns">
+                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                            <a href="/order/addtoshopcart/{{ pick.id }}" class="primary-btn add-to-cart">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /Product Single -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->

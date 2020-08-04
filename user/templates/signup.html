@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Signup User {% endblock %}
+
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block stylesheet %} {% endblock %}
+
+{% block message %} {% include 'message.html' %} {% endblock %}
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+
+{% block content %}
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="">Home</a></li>
+            <li class="active"> Signup User </li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-6 col-lg-offset-3">
+                <div class="billing-details">
+
+                    <div class="section-title">
+                        <h3 class="title">Sign Up Form</h3>
+                    </div>
+                    {{ form.media }}
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-info" type="submit" value="Signup">
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock %}
+
+
+{% block scripts %} {% endblock %}

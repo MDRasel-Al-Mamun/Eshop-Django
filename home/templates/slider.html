@@ -1,0 +1,30 @@
+{% load static %}
+
+<!-- HOME -->
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+            <!-- home slick -->
+            <div id="home-slick">
+                <!-- banner -->
+                {% for slider in product_slider %}
+                <div class="banner banner-1">
+                    <img src="{{ slider.image.url }}" alt="">
+                    <div class="banner-caption text-center">
+                        <h1 style="color: #F8694A;">{{ slider.title|truncatewords:"4" }}</h1>
+                        <h3 class="white-color font-weak">${{ slider.price }}</h3>
+                        <a href="/product/{{ slider.id }}/{{ slider.slug }}" class="primary-btn">Shop Now</a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /banner -->
+            </div>
+            <!-- /home slick -->
+        </div>
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /HOME -->
